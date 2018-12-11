@@ -1,0 +1,2 @@
+deb https://dl.bintray.com/rabbitmq-erlang/debian {{debian_distribution}} erlang
+deb https://dl.bintray.com/rabbitmq/debian {{debian_distribution}} main
