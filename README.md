@@ -29,9 +29,6 @@ ansible-playbook -i hosts rabbitmq.yaml
     > contains steps for rabbitmq-server installation on a Debian server.
 
 **templates**
-  - bintray.rabbitmq.list
-    > configures apt to install the most recent Erlang/OTP version available in the repository and use packages for Ubuntu 18.04 (Bionic).
-
   - erlang
     > configures apt to install erlang-* packages from Bintray and not standard Debian or Ubuntu repository:
 
