@@ -1,0 +1,27 @@
+- name: add Rabbimq bintray key
+  apt_key:
+    url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+    state: present
+
+- name: add Rabbitmq-server bintray PPA to source.list.d
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+      - { src: 'templates/bintray.rabbitmq.list', dest: '/etc/apt/sources.list.d/bintray.rabbitmq.list' }
+      - { src: 'templates/erlang', dest: '/etc/apt/preferences.d/erlang'}
+
+- name: apt install rabbitmq-server
+  apt:
+    name: rabbitmq-server={{ rabbitmq_version }}
+    update_cache: yes
+
+- name: add Rabbitmq config and enabled_plugins
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - { src: 'templates/rabbitmq.conf', dest: '/etc/rabbitmq/rabbitmq.conf' }
+    - { src: 'templates/enabled_plugins', dest: '/etc/rabbitmq/enabled_plugins' }
+  notify:
+    - restart rabbitmq-server

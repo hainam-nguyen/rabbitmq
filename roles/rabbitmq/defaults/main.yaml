@@ -1,0 +1,2 @@
+default_tcp_listen_port: 5672
+web_management_listen_port: 15672
