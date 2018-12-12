@@ -3,10 +3,15 @@ Ansible playbook for Rabbitmq installation on Debian/Ubuntu
 -------------------------------------------------------------------------------------------------------------
 How to use:
 
+'''Javascript
 ansible-playbook -i hosts rabbitmq.yaml
+'''
+
 
 -------------------------------------------------------------------------------------------------------------
-File details
+File detail
+
+
 
 rabbitmq.yaml contains debian distribution and version of rabbitmq-server.
 
