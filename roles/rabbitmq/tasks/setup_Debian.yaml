@@ -8,11 +8,10 @@
     repo: "{{ item }}"
     state: present
     filename: bintray.rabbitmq.list
-  loop:
-    - "deb https://dl.bintray.com/rabbitmq-erlang/debian {{ debian_distribution }} erlang"
-    - "deb https://dl.bintray.com/rabbitmq/debian {{ debian_distribution }} main"
+  loop: "{{ rabbimtq_bintray_url }}"
 
-- name: apt install rabbitmq-server
+
+- name: "apt install rabbitmq-server version {{ rabbitmq_version }}"
   apt:
     name: "rabbitmq-server={{ rabbitmq_version }}"
     update_cache: yes
@@ -22,8 +21,6 @@
   template:
     src: "templates/{{ item }}"
     dest: "/etc/rabbitmq/{{ item }}"
-  loop:
-    - rabbitmq.conf
-    - enabled_plugins
+  loop: "{{ config_files }}"
   notify:
     - restart rabbitmq-server
