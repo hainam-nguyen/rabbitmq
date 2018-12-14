@@ -12,9 +12,9 @@ ansible-playbook -i hosts rabbitmq.yaml
 
 **rabbitmq.yaml**
   > now has more options, can be defined with "task_name":
-       - install (need to define "debian_distribution" and "rabbitmq_version" too)
-       - add_user
-       - backup
+  >    - install (need to define "debian_distribution" and "rabbitmq_version" too).
+  >    - add_user.
+  >    - backup.
 
 **handlers**
   - main.yaml
