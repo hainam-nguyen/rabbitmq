@@ -1,0 +1,15 @@
+- include_vars:
+    file: list_of_users.yaml
+
+
+- name: create users based on var/list_of_users.yaml
+  rabbitmq_user:
+    user: "{{ item.name }}"
+    password: "{{ item.passwd }}"
+    tags: "{{ item.tags }}"
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+  loop: "{{ user_info }}"

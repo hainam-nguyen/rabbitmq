@@ -1,4 +1,4 @@
-# Rabbitmq installation on Debian/Ubuntu
+# Rabbitmq provisioning on Debian/Ubuntu
 
 -------------------------------------------------------------------------------------------------------------
 ## How to use:
@@ -11,7 +11,10 @@ ansible-playbook -i hosts rabbitmq.yaml
 # Usage
 
 **rabbitmq.yaml**
-  > contains debian distribution and version of rabbitmq-server.
+  > now has more options, can be defined with "task_name":
+       - install (need to define "debian_distribution" and "rabbitmq_version" too)
+       - add_user
+       - backup
 
 **handlers**
   - main.yaml
@@ -21,12 +24,22 @@ ansible-playbook -i hosts rabbitmq.yaml
   - main.yaml
     > include specific setup file for specific os_family
 
-  - setup_Debian.yaml
+  - install_rabbitmq_Debian.yaml
     > contains steps for rabbitmq-server installation on a Debian server.
 
+  - add_user_rabbitmq_Debian.yaml
+    > contains steps for adding new users to rabbitmq-server, user info are kept in var/list_of_users.yaml
+
+  - backup_rabbitmq_Debian.yaml (only structure)
+    > contains steps for backingup Rabbitmq
+
+
 **vars**
-  - main.yaml
+  - installation_info.yaml
     > include variables for related installation information.
+
+  - list_of_users.yaml
+    > contains users information to be added in rabbitmq-server
 
 **templates**
   - erlang

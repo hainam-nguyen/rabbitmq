@@ -1,3 +1,7 @@
+- name: including the file contains correct vars for the installation
+  include_vars:
+    file: installation_info.yaml
+
 - name: add Rabbitmq signing key
   apt_key:
     url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc

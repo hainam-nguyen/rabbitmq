@@ -5,3 +5,10 @@
     - role: rabbitmq
       debian_distribution: bionic
       rabbitmq_version: 3.7.9-1
+      task_name: install
+
+    #- role: rabbitmq
+    #  task_name: add_user
+
+    #- role: rabbitmq
+    #  task_name: backup

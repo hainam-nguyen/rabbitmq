@@ -1,6 +1,0 @@
----
-- hosts: testing
-  become: true
-  roles:
-    - role: rabbitmq
-      debian_distribution: bionic

@@ -1,0 +1,2 @@
+- name: "get rabbitmq /api/definitions"
+  shell: "curl -u guest:guest localhost:15672/api/definitions -o patch.json"
